@@ -1,0 +1,14 @@
+{
+  "name": "spec-delta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "When the spec changes, your green suite lies. Spec Delta makes Kane CLI prove it, and makes your agent fix it.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "kane:suite": "kane-cli testrun run --match '^tests/kane/' < /dev/null"
+  },
+  "license": "MIT"
+}

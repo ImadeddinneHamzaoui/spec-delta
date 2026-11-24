@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# Kane CLI local state (evidence we want to keep is copied to evidence/ on purpose)
+.testmuai/
