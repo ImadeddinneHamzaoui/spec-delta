@@ -1,6 +1,6 @@
 // Stayline: a tiny hotel booking app used as the system under test. Zero dependencies.
 import { createServer } from 'node:http';
-import { NOW, cancel, listBookings, reset, walletBalance } from './src/store.js';
+import { GUEST, NOW, cancel, listBookings, reset, walletBalance } from './src/store.js';
 import { hoursUntil } from './src/policy.js';
 
 const PORT = Number(process.env.PORT ?? 3000);
@@ -14,7 +14,7 @@ const fmtDate = (d) =>
 function statusCell(b) {
   if (b.status === 'active') {
     return `<form method="post" action="/bookings/${b.id}/cancel">
-      <button type="submit" aria-label="Cancel ${escape(b.guest)}'s booking">Cancel booking</button>
+      <button type="submit" aria-label="Cancel booking #${b.id}">Cancel booking</button>
     </form>`;
   }
   const outcome = b.refunded > 0 ? `Refunded ${b.refunded} €` : 'No refund';
@@ -25,7 +25,6 @@ function page(flash) {
   const rows = listBookings()
     .map((b) => `<tr>
       <td>#${b.id}</td>
-      <td>${escape(b.guest)}</td>
       <td>${escape(b.room)}</td>
       <td>${fmtDate(b.checkIn)}<br><small>Check-in in ${Math.round(hoursUntil(b.checkIn, NOW))} h</small></td>
       <td>${b.price} €</td>
@@ -62,14 +61,14 @@ function page(flash) {
 <header>
   <h1>Stayline · My bookings</h1>
   <div>
-    <div class="meta">Demo clock: ${fmtDate(NOW)}</div>
+    <div class="meta">Signed in as ${escape(GUEST)} · Demo clock: ${fmtDate(NOW)}</div>
     <div class="wallet" data-testid="wallet">Wallet balance: ${walletBalance()} €</div>
   </div>
 </header>
 <main>
-  ${flash ? `<div class="flash ${flash.refunded > 0 ? '' : 'none'}" role="status">Booking #${flash.id} for ${escape(flash.guest)} cancelled. ${flash.refunded > 0 ? `Refunded ${flash.refunded} €.` : 'No refund.'}</div>` : ''}
+  ${flash ? `<div class="flash ${flash.refunded > 0 ? '' : 'none'}" role="status">Booking #${flash.id} (${escape(flash.room)}) cancelled. ${flash.refunded > 0 ? `Refunded ${flash.refunded} €.` : 'No refund.'}</div>` : ''}
   <table>
-    <thead><tr><th>Booking</th><th>Guest</th><th>Room</th><th>Check-in</th><th>Price</th><th>Status</th></tr></thead>
+    <thead><tr><th>Booking</th><th>Room</th><th>Check-in</th><th>Price</th><th>Status</th></tr></thead>
     <tbody>${rows}</tbody>
   </table>
   <footer><a href="/reset">Reset demo data</a></footer>

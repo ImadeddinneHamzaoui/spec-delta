@@ -5,11 +5,19 @@ const HOUR_MS = 60 * 60 * 1000;
 
 export const NOW = new Date(process.env.DEMO_NOW ?? '2026-12-10T12:00:00Z');
 
+export const GUEST = 'Sam Rivera';
+
+// Check-in offsets bracket both refund cutoffs: 24 h (spec v1) and 48 h (spec v2).
 const SEED = [
-  { id: 1, guest: 'Amina', room: 'Sea view double', hoursAhead: 72, price: 120 },
-  { id: 2, guest: 'Bilal', room: 'Garden single', hoursAhead: 36, price: 120 },
-  { id: 3, guest: 'Chloé', room: 'Family suite', hoursAhead: 12, price: 120 },
-  { id: 4, guest: 'Driss', room: 'Rooftop studio', hoursAhead: 48, price: 120 },
+  { id: 1, room: 'Sea view double', hoursAhead: 72, price: 240 },
+  { id: 2, room: 'Garden single', hoursAhead: 36, price: 95 },
+  { id: 3, room: 'Family suite', hoursAhead: 12, price: 310 },
+  { id: 4, room: 'Rooftop studio', hoursAhead: 48, price: 180 },
+  { id: 5, room: 'Harbour twin', hoursAhead: 23, price: 150 },
+  { id: 6, room: 'Courtyard double', hoursAhead: 24, price: 165 },
+  { id: 7, room: 'Loft king', hoursAhead: 25, price: 205 },
+  { id: 8, room: 'Lakeside cabin', hoursAhead: 47, price: 130 },
+  { id: 9, room: 'Penthouse suite', hoursAhead: 49, price: 420 },
 ];
 
 let bookings = [];
@@ -26,7 +34,7 @@ export function reset() {
 }
 
 export function listBookings() {
-  return bookings;
+  return [...bookings].sort((a, b) => a.checkIn - b.checkIn);
 }
 
 export function walletBalance() {

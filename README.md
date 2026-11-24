@@ -6,16 +6,21 @@
 
 ## The demo app: Stayline
 
-Stayline is a tiny hotel booking app with no dependencies. The clock is frozen at 10 Dec 2026 12:00 UTC, so every run sees the same four bookings:
+Stayline is a tiny hotel booking app with no dependencies. The clock is frozen at 10 Dec 2026 12:00 UTC, so every run sees the same nine bookings. Their check-in times bracket both refund cutoffs:
 
-| Booking | Guest | Check-in in | Refunded under spec v1 (24 h) | Refunded under spec v2 (48 h) |
+| Booking | Check-in in | Price | Refunded under spec v1 (24 h) | Refunded under spec v2 (48 h) |
 |---|---|---|---|---|
-| #1 | Amina | 72 h | yes | yes |
-| #2 | Bilal | 36 h | yes | **no** |
-| #3 | Chloé | 12 h | no | no |
-| #4 | Driss | 48 h | yes | yes (boundary) |
+| #3 | 12 h | 310 € | no | no |
+| #5 | 23 h | 150 € | no | no |
+| #6 | 24 h | 165 € | yes (boundary) | **no** |
+| #7 | 25 h | 205 € | yes | **no** |
+| #2 | 36 h | 95 € | yes | **no** |
+| #8 | 47 h | 130 € | yes | **no** |
+| #4 | 48 h | 180 € | yes | yes (boundary) |
+| #9 | 49 h | 420 € | yes | yes |
+| #1 | 72 h | 240 € | yes | yes |
 
-The existing suite only covers 72 h and 12 h. Both cases have the same outcome under either spec, so the suite stays green after the rule changes. Bilal's 36 h booking is the case the stale suite misses.
+The hand-written suite only covers 72 h and 12 h. Both cases have the same outcome under either spec, so the suite stays green after the rule changes, while bookings between 24 h and 48 h are still refunded.
 
 ## Run it
 

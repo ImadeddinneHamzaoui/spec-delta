@@ -1,24 +1,25 @@
 {
+  "commit_id": "b8b7134a-c398-4125-bc08-1c812f47cdfd",
   "test_id": "8c417656-dd18-4274-9877-612daf62239e",
+  "testcase_id": "01M87WJYF80VEAQ6FR72GTCAHT",
   "project_id": "01M87WHEQR0BPNBTREFVFZ69Y6",
   "folder_id": "01M87WHFDJS7254J9968QMGRR0",
   "org_id": "3447327",
   "session_name": "cancel-72h",
-  "commit_id": "a861aeeb-e976-4429-b692-6c98f6d3631f",
-  "testcase_id": "01M87WJYF80VEAQ6FR72GTCAHT",
   "executions": [
     {
-      "execution_id": "2bfa37e6-b4c7-468e-ba20-bb1a556a6049",
+      "execution_id": "07d354bc-703b-46ac-8a41-122831ea76c4",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
-      "at": "2026-11-24T23:01:43.290Z"
+      "uploaded": false,
+      "at": "2026-11-24T23:13:24.396Z"
     },
     {
-      "execution_id": "e46710d5-87a2-4614-8bf3-f8ca3353266c",
-      "run_kind": "author",
+      "execution_id": "9ba4d019-f90f-4fc6-9f8d-4ea2c0610cb5",
+      "run_kind": "replay",
       "status": "passed",
-      "at": "2026-11-24T23:01:54.664Z",
+      "at": "2026-11-24T23:21:04.160Z",
       "uploaded": true
     }
   ]

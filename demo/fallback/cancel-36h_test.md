@@ -11,9 +11,9 @@ max_steps: 20
 Open http://localhost:3000/reset and wait for the "Stayline · My bookings" page.
 Verify the wallet balance shows "0 €".
 
-## Cancel Bilal's booking
-In the row for guest Bilal (check-in in 36 h), click "Cancel booking".
+## Cancel booking #2
+In the row for booking #2 (Garden single, check-in in 36 h, 95 €), click "Cancel booking".
 
 ## Check there is no refund
-Verify the confirmation message says booking #2 for Bilal was cancelled and "No refund".
+Verify the confirmation message says booking #2 was cancelled and "No refund".
 Verify the wallet balance still shows "0 €".

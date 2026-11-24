@@ -1,0 +1,25 @@
+{
+  "test_id": "c7977355-3fbc-4770-be4c-92deaa35ffaa",
+  "project_id": "01M87WHEQR0BPNBTREFVFZ69Y6",
+  "folder_id": "01M87WHFDJS7254J9968QMGRR0",
+  "org_id": "3447327",
+  "session_name": "late-cancellation-leaves-wallet-unchanged",
+  "commit_id": "c0de8b1c-72b1-491d-9625-b01ff9d67cb6",
+  "testcase_id": "01M87XP1G8JW4DP01R0MRK6S08",
+  "executions": [
+    {
+      "execution_id": "76c6d6ef-c37d-494c-8c47-681e7f9813c2",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T23:20:48.495Z"
+    },
+    {
+      "execution_id": "9ba4d019-f90f-4fc6-9f8d-4ea2c0610cb5",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-11-24T23:21:04.158Z",
+      "uploaded": true
+    }
+  ]
+}

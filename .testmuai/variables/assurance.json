@@ -1,0 +1,22 @@
+{
+  "start_url": {
+    "value": "http://localhost:3000/reset",
+    "secret": false,
+    "description": "Stayline browser entry URL for the My bookings cancellation tests."
+  },
+  "late_booking": {
+    "value": "#5",
+    "secret": false,
+    "description": "Identifier of a guest-owned active booking whose check-in is 23 hours after the late cancellation action."
+  },
+  "boundary_booking": {
+    "value": "#6",
+    "secret": false,
+    "description": "Identifier of a guest-owned active booking whose check-in is exactly 24 hours after the threshold cancellation action."
+  },
+  "early_booking": {
+    "value": "#7",
+    "secret": false,
+    "description": "Identifier of a guest-owned active booking whose check-in is 25 hours after the early cancellation action."
+  }
+}
