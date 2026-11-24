@@ -1,0 +1,25 @@
+{
+  "test_id": "b3890db0-94a1-44f1-a035-558fc855249c",
+  "project_id": "01M87WHEQR0BPNBTREFVFZ69Y6",
+  "folder_id": "01M87WHFDJS7254J9968QMGRR0",
+  "org_id": "3447327",
+  "session_name": "late-cancellation-leaves-wallet-unchanged-at-47-hours",
+  "commit_id": "1e73bcbf-e146-4307-b77b-e382dc038ee4",
+  "testcase_id": "01M87Y63V547BNZ5Q36QGAQD8T",
+  "executions": [
+    {
+      "execution_id": "1e729245-84fb-4693-95a9-0dd025198e9f",
+      "run_kind": "author",
+      "status": "failed",
+      "valid": true,
+      "at": "2026-11-24T23:29:25.279Z"
+    },
+    {
+      "execution_id": "b275a857-1e03-4038-93e6-365ad900a160",
+      "run_kind": "author",
+      "status": "failed",
+      "at": "2026-11-24T23:29:31.682Z",
+      "uploaded": true
+    }
+  ]
+}

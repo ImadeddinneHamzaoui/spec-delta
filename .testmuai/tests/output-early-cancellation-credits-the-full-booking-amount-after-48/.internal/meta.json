@@ -1,0 +1,25 @@
+{
+  "test_id": "98c5c2aa-cdec-48de-8e28-174c8021c897",
+  "project_id": "01M87WHEQR0BPNBTREFVFZ69Y6",
+  "folder_id": "01M87WHFDJS7254J9968QMGRR0",
+  "org_id": "3447327",
+  "session_name": "early-cancellation-credits-the-full-booking-amount-after-48",
+  "commit_id": "7c9a850a-599f-405c-b1d6-ac37d90fe35a",
+  "testcase_id": "01M87Y18XDH1W3BF0J3P3QT05K",
+  "executions": [
+    {
+      "execution_id": "6856ecd8-b778-445b-9077-ee4bd2ca7a57",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T23:27:37.929Z"
+    },
+    {
+      "execution_id": "b275a857-1e03-4038-93e6-365ad900a160",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-11-24T23:29:31.680Z",
+      "uploaded": true
+    }
+  ]
+}

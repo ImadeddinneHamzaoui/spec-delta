@@ -5,18 +5,18 @@
     "description": "Stayline browser entry URL for the My bookings cancellation tests."
   },
   "late_booking": {
-    "value": "#5",
+    "value": "#8",
     "secret": false,
-    "description": "Identifier of a guest-owned active booking whose check-in is 23 hours after the late cancellation action."
+    "description": "Identifier of a guest-owned active booking whose check-in is 47 hours away (just under the 48 h cutoff)."
   },
   "boundary_booking": {
-    "value": "#6",
+    "value": "#4",
     "secret": false,
-    "description": "Identifier of a guest-owned active booking whose check-in is exactly 24 hours after the threshold cancellation action."
+    "description": "Identifier of a guest-owned active booking whose check-in is exactly 48 hours away (the cutoff)."
   },
   "early_booking": {
-    "value": "#7",
+    "value": "#9",
     "secret": false,
-    "description": "Identifier of a guest-owned active booking whose check-in is 25 hours after the early cancellation action."
+    "description": "Identifier of a guest-owned active booking whose check-in is 49 hours away (just over the 48 h cutoff)."
   }
 }

@@ -9,5 +9,5 @@ Stayline is a hotel booking app. A guest sees their bookings on the "My bookings
 
 ## Refunds
 
-- A booking cancelled **at least 24 hours** before check-in is refunded in full. The refund is added to the guest's wallet balance.
-- A booking cancelled **less than 24 hours** before check-in is not refunded. The page shows "No refund" and the wallet balance does not change.
+- A booking cancelled **at least 48 hours** before check-in is refunded in full. The refund is added to the guest's wallet balance.
+- A booking cancelled **less than 48 hours** before check-in is not refunded. The page shows "No refund" and the wallet balance does not change.
