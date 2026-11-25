@@ -11,6 +11,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { homedir } from 'node:os';
 import { parseArgs } from 'node:util';
 
 const { values: opt } = parseArgs({
@@ -151,17 +152,25 @@ function kaneVerdict(r) {
 }
 
 // The screenshot of the failed step, pulled out of the sealed evidence pack.
+// Kane stores each test under tests/<slug>-<hash>/, with a copy of the test as test.md.
 function failedScreenshot(r, outDir) {
-  if (!r.pack || !r.testId) return null;
-  const list = spawnSync('unzip', ['-Z1', r.pack], { encoding: 'utf8' }).stdout.split('\n');
-  const steps = list.filter((f) => f.startsWith(`tests/${r.testId}/steps/`) && f.endsWith('step.json'));
-  for (const s of steps.reverse()) {
-    const json = spawnSync('unzip', ['-p', r.pack, s], { encoding: 'utf8' }).stdout;
-    if (!json.includes('"failed"')) continue;
-    const shot = s.replace('step.json', 'screenshot.jpg');
+  if (!r.pack) return null;
+  const unzip = (...args) => spawnSync('unzip', args, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }).stdout;
+  const list = unzip('-Z1', r.pack).split('\n');
+  const mine = readFileSync(r.path, 'utf8').trim();
+  const dir = [...new Set(list.filter((f) => /^tests\/[^/]+\/test\.md$/.test(f)))]
+    .find((f) => unzip('-p', r.pack, f).trim() === mine)
+    ?.replace(/test\.md$/, '');
+  if (!dir) return null;
+  const order = (f) => Number(f.slice(dir.length + 'steps/'.length).split('-')[0]);
+  const steps = list.filter((f) => f.startsWith(`${dir}steps/`) && f.endsWith('/step.json')).sort((a, b) => order(b) - order(a));
+  for (const s of steps) {
+    if (!unzip('-p', r.pack, s).includes('"failed"')) continue;
+    const bytes = spawnSync('unzip', ['-p', r.pack, s.replace('step.json', 'screenshot.jpg')], { maxBuffer: 64 * 1024 * 1024 }).stdout;
+    if (!bytes?.length) continue;
     const out = join(outDir, `${r.name.replace('_test.md', '')}.jpg`);
-    const bytes = spawnSync('unzip', ['-p', r.pack, shot]).stdout;
-    if (bytes?.length) { writeFileSync(out, bytes); return out; }
+    writeFileSync(out, bytes);
+    return out;
   }
   return null;
 }
@@ -227,7 +236,7 @@ function runAgent(prompt, screenshots, outDir) {
   say(`  ${c.dim}handing ${screenshots.length ? 'failure + screenshot' : 'failure'} to ${opt.agent}…${c.off}`);
   const res = spawnSync(cmd, args, { cwd: ROOT, input, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
   writeFileSync(join(outDir, 'agent.log'), `${res.stdout}\n--- stderr ---\n${res.stderr}`);
-  const tail = res.stdout.trim().split('\n').slice(-4).join('\n');
+  const tail = res.stdout.trim().split('\n').slice(-4).join('\n').replaceAll(`${ROOT}/`, '').replaceAll(homedir(), '~');
   say(`  ${c.dim}${tail.replace(/\n/g, '\n  ')}${c.off}`);
   return res.stdout;
 }
