@@ -5,3 +5,4 @@ node_modules/
 .testmuai/evidence/
 # kane-cli context store: shared through a location, never merged with git
 .context/
+.spec-delta/
