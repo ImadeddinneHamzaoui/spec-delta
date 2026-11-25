@@ -1,8 +1,9 @@
 node_modules/
 .DS_Store
 # Kane CLI: designed tests and variables are committed; raw evidence packs are not
-# (the ones the demo relies on are copied to evidence/ on purpose)
 .testmuai/evidence/
 # kane-cli context store: shared through a location, never merged with git
 .context/
 .spec-delta/
+# sealed packs embed absolute paths from the recording machine
+evidence/*.evidence

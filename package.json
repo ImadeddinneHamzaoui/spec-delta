@@ -8,7 +8,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test test/*.test.js",
-    "kane:suite": "kane-cli testrun run --match '^tests/kane/' < /dev/null"
+    "kane:suite": "kane-cli testrun run --match '^tests/kane/' < /dev/null",
+    "loop": "node bin/spec-delta.mjs",
+    "demo": "git checkout spec-v2-red -- src/policy.js test/policy.test.js && node bin/spec-delta.mjs --agent codex --skip-reconcile"
   },
   "license": "MIT"
 }
