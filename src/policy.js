@@ -1,5 +1,5 @@
 // Refund policy for cancellations. SPEC.md is the source of truth for this rule.
-export const REFUND_CUTOFF_HOURS = 24;
+export const REFUND_CUTOFF_HOURS = 48;
 
 const HOUR_MS = 60 * 60 * 1000;
 
